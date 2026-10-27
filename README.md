@@ -1,7 +1,7 @@
 # BREADTH-FIRST-SEARCH
 <h1>ExpNo 3 : Implement Breadth First Search Traversal of a Graph</h1> 
-<h3>Name:  </h3>
-<h3>Register Number: </h3>
+<h3>Name: LAAVANYA R </h3>
+<h3>Register Number: 212224230135 </h3>
 <H3>Aim:</H3>
 <p>To Implement Breadth First Search Traversal of a Graph using Python 3.</p>
 <h3>Theory:</h3>
@@ -103,13 +103,65 @@ G F <BR>
 <hr>
 ['0', '1', '2', '3', '4']
 <hr>
+
+
+# PROGRAM :
+
+```
+from collections import deque, defaultdict
+
+def bfs(graph, start):
+    visited = set()
+    queue = deque([start])
+    path = []
+
+    visited.add(start)
+
+    while queue:
+        node = queue.popleft()
+        path.append(node)
+
+        for neighbour in graph[node]:
+            if neighbour not in visited:
+                visited.add(neighbour)
+                queue.append(neighbour)
+
+    return path
+
+
+graph = defaultdict(list)
+
+v, e = map(int, input("Enter the number of nodes and edges: ").split())
+
+print("\nEnter the edges (Adjacent Nodes):")
+
+for i in range(e):
+    u, w = input(f"Edge {i + 1} (u v): ").split()
+    graph[u].append(w)
+    graph[w].append(u)
+
+print("\nAdjacency List:")
+for node in graph:
+    print(node, "->", graph[node])
+
+start = input("\nEnter the start node for BFS: ")
+
+if start not in graph:
+    print("Invalid start node!")
+else:
+    traversed_path = bfs(graph, start)
+    print("\nBFS Traversal:", " -> ".join(traversed_path))
+
+
+```
+# OUTPUT
+
+
+<img width="1185" height="802" alt="Screenshot 2026-10-27 082848" src="https://github.com/user-attachments/assets/b0c47dcb-7937-44fd-88c0-01cdf3c4dd12" />
+
+
 <h3>Result:</h3>
 <hr>
 <p>Thus,a Graph was constructed and implementation of Breadth First Search for the same graph was done successfully.</p>
-
-
-
-
-
 
 
